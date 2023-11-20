@@ -1,0 +1,36 @@
+1. Ascending order: 
+MOV CH, 04H 
+MOV CL, 04H 
+MOV SI, 2000 
+MOV AL, [SI] 
+MOV BL, [SI+1] 
+CMP AL, BL 
+JB 101B 
+MOV DL, [SI+1] 
+XCHG [SI], DL 
+MOV [SI+1], DL 
+INC SI 
+DEC CL 
+JNZ 100A 
+DEC CH 
+JNZ 1003 
+HLT 
+
+
+2. Descending order: 
+MOV CH, 04H 
+MOV CL, 04H 
+MOV SI, 2000 
+MOV AL, [SI] 
+MOV BL, [SI+1] 
+CMP AL, BL 
+JNB 101B 
+MOV DL, [SI+1] 
+XCHG [SI], DL 
+MOV [SI+1], DL 
+INC SI 
+DEC CL 
+JNZ 100A 
+DEC CH 
+JNZ 1003 
+HLT 

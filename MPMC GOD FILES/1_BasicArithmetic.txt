@@ -1,0 +1,119 @@
+1. Addition(8-bit): 
+ORG 0000H 
+MOV A,#0E7H 
+ADDC A,#H 
+MOV R7,A 
+END 
+
+
+2. Subtraction(8-bit): 
+ORG 0000H 
+MOV A,#0E7H 
+SUBB A,#8DH 
+MOV R4,A 
+END 
+
+
+3. Addition(16-bit): 
+ORG 0000H 
+MOV A, #0E5H 
+ADD A, #0F2H 
+MOV R4, A 
+MOV A, #16H 
+ADDC A, #0A3H 
+MOV R5,A 
+END 
+
+
+4. Subtraction(16-bit): 
+ORG 0000H 
+MOV A,#6AH 
+SUBB A,#8BH 
+MOV R1,A 
+MOV A,#0F5H 
+SUBB A,#9DH 
+MOV R2,A 
+END 
+
+
+5. Multiplication(8-bit): 
+ORG 0000H 
+MOV A,#5AH 
+MOV B,#2BH 
+MUL AB 
+MOV R3,A 
+MOV R4,B 
+END 
+
+
+6. Division(8-bit): 
+ORG 0000H 
+ MOV A,#0E3H 
+ MOV B,#2BH 
+ DIV AB 
+ MOV R6,A 
+ MOV R7,B 
+ END 
+
+
+7. Multiplication(16-bit): 
+ORG 0000H 
+MOV R0,#0F1H 
+MOV R1,#4BH 
+MOV R2,#2EH 
+MOV R3,#9DH 
+MOV A,R2 
+MOV B,R3 
+MUL AB 
+MOV R4,A 
+MOV R5,B 
+MOV A,R2 
+MOV B,R1 
+MUL AB 
+MOV R6,B 
+ADDC A,R5 
+MOV R5,A 
+MOV A,R0 
+MOV B,R3 
+MUL AB 
+ADDC A,R5 
+MOV R5,A 
+MOV A,B 
+ADDC A,R6 
+MOV R6,A 
+MOV A,R0 
+MOV B,R1 
+MUL AB 
+ADDC A,R6 
+MOV R6,A 
+MOV A,B 
+ADDC A,#00H 
+MOV R7,A 
+END 
+
+
+8. Moving Data between A and data, Rn and data, A and Rn: 
+ORG 0000H 
+MOV A,#30H 
+MOV R0,#40H 
+MOV R1,A 
+MOV A,R0 
+END 
+
+
+9. Move operation between direct address and data, A and direct address, 
+and Rn and direct Address: 
+ORG 0000H 
+MOV 30H,#22H 
+MOV A,30H 
+MOV 40H,A 
+MOV R0,30H 
+END 
+
+
+10. Move block of 10 bytes of data from 35H to 65H: 
+ORG 0000H 
+MOV R0, #35H 
+MOV R1, #65H 
+MOV R3, #10 
+BACK: MOV A, @R0 

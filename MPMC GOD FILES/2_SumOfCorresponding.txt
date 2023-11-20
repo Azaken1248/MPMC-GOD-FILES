@@ -1,0 +1,48 @@
+1. Addition With Carry: 
+MOV AX, [2000] 
+MOV BX, [2002] 
+ADD AX, BX 
+MOV CL, 00 
+JNC 1011 
+INC CL 
+MOV [2004], AX 
+MOV [2006], CL 
+HLT 
+
+
+2. Average of three numbers: 
+MOV BX, 0003H 
+MOV AX, 0002H 
+ADD AX, 0002H 
+ADD AX, 0002H 
+DIV BX 
+MOV [2000], AX 
+HLT 
+
+
+3. Sum of array of numbers: 
+MOV CX, 0006H 
+MOV AX, 0000H 
+MOV BX, 0000H 
+MOV SI, 2000H 
+MOV BL, [SI] 
+ADD AX, BX 
+INC SI 
+DEC CX 
+JNZ 1010 
+MOV DI, 3000H 
+MOV [DI], AX 
+HLT 
+
+
+4. Sum of corresponding elements of two arrays: 
+MOV CX, 0006H 
+MOV SI, 3000H 
+MOV DI, 1600H 
+MOV AL, [SI] 
+ADD AL, [DI] 
+MOV [SI], AL 
+INC SI 
+INC DI 
+LOOP 150C 
+HLT

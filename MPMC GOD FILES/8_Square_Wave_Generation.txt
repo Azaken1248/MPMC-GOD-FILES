@@ -1,0 +1,16 @@
+org 0000h 
+mov tmod, #10h 
+repeat: 
+mov r0, #14 
+cpl p1.7 
+back: 
+mov tl1, #00h 
+mov th1, #00h 
+setb tr1 
+again: 
+jnb tf1, again 
+clr tr1 
+clr tf1 
+djnz r0, back 
+sjmp repeat 
+END 
